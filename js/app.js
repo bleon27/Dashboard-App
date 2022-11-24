@@ -1,3 +1,4 @@
+import { charjs } from "./chart.js";
 //VARIABLES GLOBALES
 const contenedorNintendo = document.querySelector('.nintendo');
 let pokemonName = '';
@@ -47,70 +48,13 @@ async function getRickAndMorty() {
         `
     */
     //pokemonName = resultado.name;
-    const ctx = document.getElementById('PorcentajeRicksMortys');
 
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Ricks', 'Mortys'],
-            datasets: [{
-                label: 'Procentaje',
-                data: [porcentajeRicks, porcentajeMortys],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    const data = {
+        rick: { total: totalRicks, alive: resultadoRicksAlive, dead: resultadoRicksDead, unknown: resultadoRicksUnknown, porcentajeRicks: porcentajeRicks },
+        morty: { total: totalMortys, alive: resultadoMortysAlive, dead: resultadoMortysDead, unknown: resultadoMortysUnknown, porcentajeMortys: porcentajeMortys }
+    }
+    charjs(data)
 
-    const ctxBarrasRick = document.getElementById('barrasRick');
-    new Chart(ctxBarrasRick, {
-        type: 'bar',
-        data: {
-            labels: ['Vivos', 'Muertos', 'Desconocido'],
-            datasets: [{
-                label: 'Cantidad',
-                data: [resultadoRicksAlive.info.count, resultadoRicksDead.info.count, , resultadoRicksUnknown.info.count],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const ctxBarrasMorty = document.getElementById('barrasMorty');
-    new Chart(ctxBarrasMorty, {
-        type: 'bar',
-        data: {
-            labels: ['Vivos', 'Muertos', 'Desconocido'],
-            datasets: [{
-                label: 'Morty',
-                data: [resultadoMortysAlive.info.count, resultadoMortysDead.info.count, , resultadoMortysUnknown.info.count],
-                borderWidth: 1,
-            }, {
-                label: 'Rick',
-                data: [resultadoRicksAlive.info.count, resultadoRicksDead.info.count, , resultadoRicksUnknown.info.count],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
 }
 
 function checkPokemon() {
