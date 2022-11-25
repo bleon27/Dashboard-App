@@ -1,0 +1,27 @@
+{
+  "name": "dashboard-app",
+  "version": "1.0.0",
+  "description": "Proyecto rick y morty",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bleon27/Dashboard-App.git"
+  },
+  "keywords": [
+    "rick",
+    "morty"
+  ],
+  "author": "Bryan Leon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bleon27/Dashboard-App/issues"
+  },
+  "homepage": "https://github.com/bleon27/Dashboard-App#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "chart.js": "^4.0.1"
+  }
+}

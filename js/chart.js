@@ -1,3 +1,4 @@
+import { Chart } from "../node_modules/chart.js/auto/auto.js";
 export function charjs(data) {
     const ctx = document.getElementById('PorcentajeRicksMortys');
     new Chart(ctx, {
