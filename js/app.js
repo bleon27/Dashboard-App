@@ -40,7 +40,7 @@ async function getRickAndMorty() {
     document.getElementById("totalRycksMortys").innerHTML = total;
     document.getElementById("totalRicks").innerHTML = porcentajeRicks;
     document.getElementById("totalMortys").innerHTML = porcentajeMortys;
-    
+
     const data = {
         rick: { total: totalRicks, alive: resultadoRicksAlive, dead: resultadoRicksDead, unknown: resultadoRicksUnknown, porcentajeRicks: porcentajeRicks },
         morty: { total: totalMortys, alive: resultadoMortysAlive, dead: resultadoMortysDead, unknown: resultadoMortysUnknown, porcentajeMortys: porcentajeMortys }
@@ -49,12 +49,66 @@ async function getRickAndMorty() {
 
 }
 
-function checkPokemon() {
-    let inputPokemon = document.querySelector('.input').value;
-    console.log(inputPokemon, pokemonName);
-    if (inputPokemon === pokemonName) {
-        getRickAndMorty();
-    } else {
-        document.querySelector('.input').value = ''
-    }
+async function getLoadData() {
+    const respuesta = await fetch(`https://rickandmortyapi.com/api/character/`);
+    const resultado = await respuesta.json();
+    var tabla = document.getElementById('tableRickAbdMorty').querySelector('tbody');
+    tabla.innerHTML = '';
+    console.log(resultado.results)
+    var tr = '';
+    resultado.results.forEach(function callback(val, index) {
+        tr += `
+            <tr>
+                <td>${val.id}</td>
+                <td>${val.name}</td>
+                <td>${val.status}</td>
+                <td>${val.species}</td>
+                <td>${val.type}</td>
+                <td>${val.gender}</td>
+                <td>${val.origin.name}</td>
+                <td>${val.location.name}</td>
+                <td><img src="${val.image}" class="image"></td>
+            </tr>
+        `
+        /*let tr = document.createElement('tr');
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+        let td5 = document.createElement('td');
+        let td6 = document.createElement('td');
+        let td7 = document.createElement('td');
+        let td8 = document.createElement('td');
+        let td9 = document.createElement('td');
+        let td10 = document.createElement('td');
+
+        td1.appendChild(val.id);
+        td2.appendChild(val.name);
+        td3.appendChild(val.status);
+        td4.appendChild(val.species);
+        td5.appendChild(val.type);
+        td6.appendChild(val.gender);
+        td7.appendChild(val.origin);
+        td8.appendChild(val.location);
+        td9.appendChild(val.image);
+        td10.appendChild(val.episode);
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+        tr.appendChild(td7);
+        tr.appendChild(td8);
+        tr.appendChild(td9);
+        tr.appendChild(td10);
+        tabla.insertAdjacentElement("beforeend", tr);
+        */
+    });
+    tabla.innerHTML = tr;
+
+
 }
+
+getLoadData()
