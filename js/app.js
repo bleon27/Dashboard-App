@@ -40,15 +40,7 @@ async function getRickAndMorty() {
     document.getElementById("totalRycksMortys").innerHTML = total;
     document.getElementById("totalRicks").innerHTML = porcentajeRicks;
     document.getElementById("totalMortys").innerHTML = porcentajeMortys;
-    /*
-        contenedorNintendo.innerHTML = `
-        <img width='200px' src = '${resultado.sprites.front_default}' />
-        <input class='input' type='text' placeholder='¿Quien es este pokemon?' />
-        <button type='button' onClick={checkPokemon()}>Probar</button>
-        `
-    */
-    //pokemonName = resultado.name;
-
+    
     const data = {
         rick: { total: totalRicks, alive: resultadoRicksAlive, dead: resultadoRicksDead, unknown: resultadoRicksUnknown, porcentajeRicks: porcentajeRicks },
         morty: { total: totalMortys, alive: resultadoMortysAlive, dead: resultadoMortysDead, unknown: resultadoMortysUnknown, porcentajeMortys: porcentajeMortys }
