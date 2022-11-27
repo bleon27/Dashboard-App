@@ -42,6 +42,22 @@
         .image {
             width: 60px;
         }
+
+        #PorcentajeRicksMortys {
+            height: 300px !important;
+            width: 80%;
+        }
+
+        #barrasMorty {
+            height: 300px !important;
+            width: 80%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #tableRickAbdMorty {
+                font-size: 9pt;
+            }
+        }
     </style>
 </head>
 
@@ -74,22 +90,35 @@
         </div>
 
         <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div class="text-bg-dark me-md-3 py-3 px-3 pt-md-5 pb-md-5 px-md-5 text-center overflow-hidden">
-                <img width="350" class="scale" src="./img/rick.png" alt="Rick">
-            </div>
-            <div class="bg-light me-md-3 py-3 px-3 pt-md-5 pb-md-5 px-md-5 text-center overflow-hidden">
-                <img width="350" class="scale" src="./img/morty.png" alt="Morty">
-            </div>
-        </div>
-
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
             <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
+                    <h2 class="display-5">Tabla de Busqueda</h2>
+                    <p class="lead">Encuentra a tu personaje favorito</p>
                 </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; border-radius: 21px 21px 0 0;">
-                    <table class="table" id="tableRickAbdMorty">
+                <div class="bg-body shadow-sm mx-auto pb-3  overflow-auto"
+                    style="width: 80%; border-radius: 21px 21px 0 0;">
+                    <div class="row g-2 mb-3">
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <select class="form-select" id="columBusqueda">
+                                    <option selected>Todos</option>
+                                    <option value="alive">Vivo</option>
+                                    <option value="dead">Muerto</option>
+                                    <option value="unknown">Desconocido</option>
+                                </select>
+                                <label for="floatingSelectGrid">Estado</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="buscarNombre"
+                                    placeholder="name@example.com">
+                                <label for="buscarNombre">Busqueda por nombre</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table " id="tableRickAbdMorty">
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
@@ -104,60 +133,44 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><button class="page-link" id="anterior">Anterior</button></li>
+                            <li class="page-item"><button class="page-link" id="pagina-anterior">1</button></li>
+                            <li class="page-item"><button class="page-link" id="pagina-actual">1</button></li>
+                            <li class="page-item"><button class="page-link" id="ultima-pagina">3</button></li>
+                            <li class="page-item"><button class="page-link" id="siguiente">Siguiente</button></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
 
         <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Tabla comparativa</h2>
-                    <p class="lead">tabla comparativa del estade de los ricks y mortys</p>
-                </div>
-                <div class="bg-light shadow-sm mx-auto d-flex justify-content-center"
-                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-
-                    <canvas id="PorcentajeRicksMortys"></canvas>
-                </div>
-            </div>
-            <div class="bg-light me-md-3 py-3 px-3 py-md-5 px-md-5 text-center overflow-hidden">
+            <div class="text-bg-dark me-md-3 pt-3 px-3 py-md-5 px-md-5 text-center overflow-hidden">
                 <div class="my-3 p-3">
                     <h2 class="display-5">Rycks y Mortys</h2>
                     <p class="lead">De un total de <span id="totalRycksMortys"></span> Ricks y Mortys el <span
                             id="totalRicks"></span>% son Ricks y el <span id="totalMortys"></span>% Son Mortys</p>
                 </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-
+                <div class="bg-light shadow-sm mx-auto d-flex justify-content-center"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                    <canvas id="PorcentajeRicksMortys"></canvas>
+                </div>
+            </div>
+            <div class="bg-light me-md-3 py-3 px-3 py-md-5 px-md-5 text-center overflow-hidden">
+                <div class="my-3 p-3">
+                    <h2 class="display-5">Tabla comparativa</h2>
+                    <p class="lead">tabla comparativa del estade de los ricks y mortys</p>
+                </div>
+                <div class="bg-body shadow-sm mx-auto d-flex justify-content-center"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
                     <canvas id="barrasMorty"></canvas>
                 </div>
             </div>
         </div>
-
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-            <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-body shadow-sm mx-auto d-flex justify-content-center"
-                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                    <canvas id="barrasRick"></canvas>
-                </div>
-            </div>
-            <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                </div>
-                <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                </div>
-            </div>
-        </div>
-
-
     </main>
 
     <footer class="container py-5">

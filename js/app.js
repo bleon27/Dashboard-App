@@ -3,13 +3,8 @@ import { charjs } from "./chart.js";
 const contenedorNintendo = document.querySelector('.nintendo');
 let pokemonName = '';
 
-
-
-//ESCUCHADORES DE EVENTOS
 document.addEventListener('DOMContentLoaded', getRickAndMorty);
 
-
-//FUNCIONES
 async function getRickAndMorty() {
     const respuestaRicks = await fetch(`https://rickandmortyapi.com/api/character/?name=rick`);
     const resultadoRicks = await respuestaRicks.json();
@@ -48,13 +43,12 @@ async function getRickAndMorty() {
     charjs(data)
 
 }
-
+var paginaActual = 1;
+var totalPaginas = 0;
 async function getLoadData() {
-    const respuesta = await fetch(`https://rickandmortyapi.com/api/character/`);
+    const respuesta = await fetch(`https://rickandmortyapi.com/api/character/?page=${paginaActual}${busqueda}`);
     const resultado = await respuesta.json();
     var tabla = document.getElementById('tableRickAbdMorty').querySelector('tbody');
-    tabla.innerHTML = '';
-    console.log(resultado.results)
     var tr = '';
     resultado.results.forEach(function callback(val, index) {
         tr += `
@@ -70,45 +64,50 @@ async function getLoadData() {
                 <td><img src="${val.image}" class="image"></td>
             </tr>
         `
-        /*let tr = document.createElement('tr');
-        let td1 = document.createElement('td');
-        let td2 = document.createElement('td');
-        let td3 = document.createElement('td');
-        let td4 = document.createElement('td');
-        let td5 = document.createElement('td');
-        let td6 = document.createElement('td');
-        let td7 = document.createElement('td');
-        let td8 = document.createElement('td');
-        let td9 = document.createElement('td');
-        let td10 = document.createElement('td');
-
-        td1.appendChild(val.id);
-        td2.appendChild(val.name);
-        td3.appendChild(val.status);
-        td4.appendChild(val.species);
-        td5.appendChild(val.type);
-        td6.appendChild(val.gender);
-        td7.appendChild(val.origin);
-        td8.appendChild(val.location);
-        td9.appendChild(val.image);
-        td10.appendChild(val.episode);
-
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tr.appendChild(td4);
-        tr.appendChild(td5);
-        tr.appendChild(td6);
-        tr.appendChild(td7);
-        tr.appendChild(td8);
-        tr.appendChild(td9);
-        tr.appendChild(td10);
-        tabla.insertAdjacentElement("beforeend", tr);
-        */
     });
+    document.getElementById("ultima-pagina").innerHTML = resultado.info.pages;
+    totalPaginas = resultado.info.pages;
     tabla.innerHTML = tr;
-
-
 }
 
 getLoadData()
+
+
+var busqueda = '';
+
+document.querySelector("#columBusqueda").addEventListener("change", buscar);
+
+document.getElementById("buscarNombre").addEventListener("keyup", buscar)
+function buscar() {
+    var buscarNombre = document.getElementById("buscarNombre").value.toLowerCase();
+    var $SelectColumBusqueda = document.querySelector("#columBusqueda");
+    var selectedOption = $SelectColumBusqueda.options[$SelectColumBusqueda.selectedIndex].value;
+    var estado = '';
+    var name = '';
+
+    if (buscarNombre != '') {
+        name = `&name=${buscarNombre}`;
+    }
+    if (selectedOption.value != 'Todos') {
+        estado = `&status=${selectedOption}`;
+    }
+    paginaActual = 1;
+    busqueda = `${name}${estado}`;
+    getLoadData()
+}
+
+document.getElementById("anterior").addEventListener("click", function () {
+    if (paginaActual > 1) {
+        paginaActual--;
+        document.getElementById("pagina-actual").innerHTML = paginaActual;
+        getLoadData()
+    }
+})
+
+document.getElementById("siguiente").addEventListener("click", function () {
+    if (paginaActual < totalPaginas) {
+        paginaActual++;
+        document.getElementById("pagina-actual").innerHTML = paginaActual;
+        getLoadData()
+    }
+})
