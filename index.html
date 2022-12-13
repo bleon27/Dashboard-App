@@ -11,59 +11,11 @@
     <title>Rick and Morty</title>
     <link href="./node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="./app.css">
-    <style>
-        .bg-img {
-            background-image: url('./img/rick-y-morty-portal-dimensional-6603.webp');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .img-title-rick-morty {
-            position: absolute;
-            top: -19px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 29%;
-        }
-
-        .scale {
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .scale:hover {
-            transform: scale(1.1);
-        }
-
-        .p-26-p {
-            padding: 26% !important;
-        }
-
-        .image {
-            width: 60px;
-        }
-
-        #PorcentajeRicksMortys {
-            height: 300px !important;
-            width: 80%;
-        }
-
-        #barrasMorty {
-            height: 300px !important;
-            width: 80%;
-        }
-
-        @media only screen and (max-width: 600px) {
-            #tableRickAbdMorty {
-                font-size: 9pt;
-            }
-        }
-    </style>
 </head>
 
 <body>
     <header class="site-header sticky-top py-1">
-        <nav class="container d-flex flex-column flex-md-row justify-content-between">
+        <nav class="container d-flex flex-column flex-md-row justify-content-start">
             <a class="py-2" href="#" aria-label="Product">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
@@ -74,13 +26,8 @@
                         d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
                 </svg>
             </a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+            <a class="py-2 d-none d-md-inline-block ms-3" href="#verBuscar">Buscar</a>
+            <a class="py-2 d-none d-md-inline-block ms-3" href="#graficas">Tablas Comparativas</a>
         </nav>
     </header>
 
@@ -89,7 +36,7 @@
             <img class="img-title-rick-morty " src="./img/Rick-and-Morty.png" alt="">
         </div>
 
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3" id="verBuscar">
             <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
                 <div class="my-3 p-3">
                     <h2 class="display-5">Tabla de Busqueda</h2>
@@ -148,7 +95,7 @@
             </div>
         </div>
 
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3" id="graficas">
             <div class="text-bg-dark me-md-3 pt-3 px-3 py-md-5 px-md-5 text-center overflow-hidden">
                 <div class="my-3 p-3">
                     <h2 class="display-5">Rycks y Mortys</h2>
@@ -184,44 +131,16 @@
                     <path
                         d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
                 </svg>
-                <small class="d-block mb-3 text-muted">&copy; 2017–2022</small>
+                <small class="d-block mb-3 text-muted">&copy; 2022–2023</small>
             </div>
             <div class="col-6 col-md">
-                <h5>Features</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Cool stuff</a></li>
-                    <li><a class="link-secondary" href="#">Random feature</a></li>
-                    <li><a class="link-secondary" href="#">Team feature</a></li>
-                    <li><a class="link-secondary" href="#">Stuff for developers</a></li>
-                    <li><a class="link-secondary" href="#">Another one</a></li>
-                    <li><a class="link-secondary" href="#">Last time</a></li>
+                    <li><a class="link-secondary" href="#verBuscar"><h5>Buscar</h5></a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">
-                <h5>Resources</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Resource name</a></li>
-                    <li><a class="link-secondary" href="#">Resource</a></li>
-                    <li><a class="link-secondary" href="#">Another resource</a></li>
-                    <li><a class="link-secondary" href="#">Final resource</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Resources</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Business</a></li>
-                    <li><a class="link-secondary" href="#">Education</a></li>
-                    <li><a class="link-secondary" href="#">Government</a></li>
-                    <li><a class="link-secondary" href="#">Gaming</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>About</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="link-secondary" href="#">Team</a></li>
-                    <li><a class="link-secondary" href="#">Locations</a></li>
-                    <li><a class="link-secondary" href="#">Privacy</a></li>
-                    <li><a class="link-secondary" href="#">Terms</a></li>
+                    <li><a class="link-secondary" href="#graficas"><h5>Tablas Comparativas</h5></a></li>
                 </ul>
             </div>
         </div>

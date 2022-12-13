@@ -118,3 +118,50 @@
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+
+.bg-img {
+  background-image: url("./img/rick-y-morty-portal-dimensional-6603.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.img-title-rick-morty {
+  position: absolute;
+  top: -19px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 29%;
+}
+
+.scale {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.scale:hover {
+  transform: scale(1.1);
+}
+
+.p-26-p {
+  padding: 26% !important;
+}
+
+.image {
+  width: 60px;
+}
+
+#PorcentajeRicksMortys {
+  height: 300px !important;
+  width: 80%;
+}
+
+#barrasMorty {
+  height: 300px !important;
+  width: 80%;
+}
+
+@media only screen and (max-width: 600px) {
+  #tableRickAbdMorty {
+    font-size: 9pt;
+  }
+}
